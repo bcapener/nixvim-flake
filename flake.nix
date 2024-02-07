@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
   };
 
   outputs = {
@@ -49,6 +50,15 @@
         packages = {
           # Lets you run `nix run .` to start nixvim
           default = nvim;
+        };
+
+        # https://flake.parts/overlays#consuming-an-overlay
+        _module.args.pkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = [
+            inputs.nixneovimplugins.overlays.default
+          ];
+          config = { };
         };
       };
     };
