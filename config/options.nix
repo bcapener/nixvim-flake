@@ -10,6 +10,7 @@
       number = true;
       relativenumber = true;
       incsearch = true;
+      foldenable = false;
     };
   };
 }
