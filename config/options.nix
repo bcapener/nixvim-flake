@@ -11,6 +11,7 @@
       relativenumber = true;
       incsearch = true;
       foldenable = false;
+      mouse = "a";
     };
   };
 }

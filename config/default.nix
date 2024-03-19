@@ -12,8 +12,8 @@
 
   plugins = {
     # dashboard.enable = true;
-    alpha.enable = true;
-    alpha.theme = "dashboard";
+    # alpha.enable = true;
+    # alpha.theme = "dashboard";
 
     telescope = {
       enable = true;
@@ -35,7 +35,7 @@
       };
     };
 
-    which-key.enable = true;
+    # which-key.enable = true;
 
     nix.enable = true;
 
@@ -45,9 +45,9 @@
         nixd.enable = true;
         lua-ls.enable = true;
 
-        pylsp.enable = true;
+        # pylsp.enable = true;
         pyright.enable = true;
-        ruff-lsp.enable = true;
+        # ruff-lsp.enable = true;
 
         # ccls.enable = true;
         clangd.enable = true;
@@ -87,9 +87,37 @@
         { name = "nvim_lsp"; }
         { name = "path"; }
         { name = "buffer"; }
+        { name = "nvim_lsp_document_symbol"; }
+        { name = "nvim_lsp_signature_help"; }
+        
       ];
+      mapping = {
+        "<C-Space>" = "cmp.mapping.complete()";
+        "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+        "<C-e>" = "cmp.mapping.close()";
+        "<C-f>" = "cmp.mapping.scroll_docs(4)";
+        "<CR>" = "cmp.mapping.confirm({ select = true })";
+        "<S-Tab>" = {
+          action = "cmp.mapping.select_prev_item()";
+          modes = [
+            "i"
+            "s"
+          ];
+        };
+        "<Tab>" = {
+          action = "cmp.mapping.select_next_item()";
+          modes = [
+            "i"
+            "s"
+          ];
+        };
+
+      };
 
     };
+    cmp-nvim-lsp.enable = true;
+    cmp-nvim-lsp-document-symbol.enable = true;
+    cmp-nvim-lsp-signature-help.enable = true;
 
     gitsigns = {
       enable = true;
@@ -100,5 +128,6 @@
     # auto-session.autoSave.enabled = true;
     # auto-session.autoSession.enableLastSession = true;
 
+    nvim-tree.enable = true;
   };
 }
